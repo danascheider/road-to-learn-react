@@ -14,10 +14,10 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
+    this.state = {
       results: null,
-      searchKey: '', 
-      searchTerm: DEFAULT_QUERY, 
+      searchKey: '',
+      searchTerm: DEFAULT_QUERY,
     };
 
     this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
@@ -30,7 +30,7 @@ class App extends Component {
 
   onDismiss(id) {
     const isNotID     = item => item.objectID !== id;
-    
+
     const updatedHits = this.state.result.hits.filter(isNotID);
 
     this.setState({ result: { ...this.state.result, hits: updatedHits} });
@@ -65,17 +65,14 @@ class App extends Component {
     this.setState({
       results: {
         ...results,
-        [searchKey]: { hits: updatedHits, page } 
+        [searchKey]: { hits: updatedHits, page }
       }
     });
   }
 
   fetchSearchTopStories(searchTerm, page = 0) {
     fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}\
-      ${page}&${PARAM_HPP}${DEFAULT_HPP}`,
-      { 
-        headers: headers
-      })
+      ${page}&${PARAM_HPP}${DEFAULT_HPP}`)
       .then(response => response.json())
       .then(result => this.setSearchTopStories(result))
       .catch(error => error);
