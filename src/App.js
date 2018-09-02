@@ -4,11 +4,13 @@ import './App.css';
 
 const DEFAULT_QUERY = 'redux';
 const DEFAULT_HPP   = '100';
-const PATH_BASE     = 'https://github.com/cheeaun/node-hnapi';
-const PATH_SEARCH   = '/search';
-const PARAM_SEARCH  = 'query=';
-const PARAM_PAGE    = 'page=';
-const PARAM_HPP     = 'hitsPerPage=';
+
+const PATH_BASE = 'https://hn.algolia.com/api/v1';
+const PATH_SEARCH = '/search';
+const PARAM_SEARCH = 'query=';
+const PARAM_PAGE = 'page=';
+const PARAM_HPP = 'hitsPerPage=';
+
 
 class App extends Component {
   constructor(props) {
